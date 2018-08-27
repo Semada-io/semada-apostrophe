@@ -8,9 +8,6 @@ var apos = require('apostrophe')({
   // configuring user accounts.
 
   modules: {
-
-    // Apostrophe module configuration
-
     // Note: most configuration occurs in the respective
     // modules' directories. See lib/apostrophe-assets/index.js for an example.
     
@@ -23,6 +20,10 @@ var apos = require('apostrophe')({
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') },
     'apostrophe-pages': {
       types: [
+        {
+          name: 'apostrophe-blog-page',
+          label: 'Blog'
+        },
         {
           name: 'default',
           label: 'Default'

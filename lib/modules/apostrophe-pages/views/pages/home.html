@@ -5,6 +5,20 @@
 
 {% extends "layout.html" %}
 
+{% block beforeMain %}
+<ul class="tabs" style="float:right">
+  {% for tab in data.home._children %}
+    <li class="
+      {% if data.page and
+        (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id)
+      %}
+        current
+      {% endif %}
+    " ><a class="nav-link" href="{{ tab._url }}">{{ tab.title }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
 {% block main %}
   <div class="main-content">
     <h3>Hello!
