@@ -6,7 +6,10 @@
 {% extends "layout.html" %}
 
 {% block beforeMain %}
-<ul class="tabs" style="float:right">
+<div class="before-main">
+<ul class="tabs" list-style-type=none
+    margin=0;
+    padding=0>
   {% for tab in data.home._children %}
     <li class="
       {% if data.page and
@@ -17,15 +20,12 @@
     " ><a class="nav-link" href="{{ tab._url }}">{{ tab.title }}</a></li>
   {% endfor %}
 </ul>
+</div>
 {% endblock %}
 
 {% block main %}
   <div class="main-content">
-    <h3>Hello!
-      {% if not data.user %}
-        <a class="login-link" href="/login">Login</a>
-      {% endif %}
-    </h3>
-    <p>Welcome !. Let's get to work!</p>
+    <h3>Hello!</h3>
+    <p>Welcome to Semada!</p>
   </div>
 {% endblock %}

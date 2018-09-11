@@ -1,20 +1,40 @@
 {% extends "layout.html" %}
 
 {% block beforeMain %}
-  <div class="block hero">
-    <div class="inner">
-      <div class="hero-text">
-        <h4>Welcome to my first Apostrophe site!</h4>
-      </div>
-    </div>
-  </div>
+<div class="before-main">
+<ul class="tabs" list-style-type=none
+    margin=0;
+    padding=0>
+  {% for tab in data.home._children %}
+    <li class="
+      {% if data.page and
+        (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id)
+      %}
+        current
+      {% endif %}
+    " ><a class="nav-link" href="{{ tab._url }}">{{ tab.title }}</a></li>
+  {% endfor %}
+</ul>
+</div>
 {% endblock %}
 {% block main %}
-  {#
-    Usually, your page templates in the apostrophe-pages module will override
-    this block. It is safe to assume this is where your page-specific content
-    should go.
-  #}
+  <div class="main-content">
+    {{ apos.area(data.page, 'body', {
+      widgets: {
+        'apostrophe-images': {
+          size: 'full'
+        },
+        'apostrophe-rich-text': {
+          toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Unlink' ],
+          styles: [
+            { name: 'Heading', element: 'h3' },
+            { name: 'Subheading', element: 'h4' },
+            { name: 'Paragraph', element: 'p' }
+          ]
+        }
+      }
+    }) }}
+  </div>
 {% endblock %}
 
 {% block afterMain %}
