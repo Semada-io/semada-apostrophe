@@ -24,8 +24,18 @@
 {% endblock %}
 
 {% block main %}
-  <div class="main-content">
-    <h3>Hello!</h3>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">Logo</div>
+      <div class="col">Navigation</div>
+    </div>
+    <h3>
+      Hello!
+      {% if not data.user %}	    
+        <p>Welcome to Semada!</p>
+        <a class="login-link" href="/login">Login</a>	
+      {% endif %}
+    </h3>
     <p>Welcome to Semada!</p>
   </div>
 {% endblock %}

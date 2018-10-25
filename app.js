@@ -16,8 +16,12 @@ var apos = require('apostrophe')({
 
     // If a template is not found somewhere else, serve it from the top-level
     // `views/` folder of the project
-
+    
     'apostrophe-templates': { viewsFolderFallback: path.join(__dirname, 'views') },
+    'semada-theme': {},
+    'apostrophe-assets': {
+      minify: (process.env.ENV === 'prod' || process.env.ENV === 'staging')
+    },
     'apostrophe-pages': {
       types: [
         {
